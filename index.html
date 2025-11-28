@@ -1,0 +1,1366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Structure Decision Guide | Ignite Positive Changes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Ignite Positive Changes Brand Colors */
+            --ignite-red: #cf462e;
+            --ignite-yellow: #ffcd1d;
+            --ignite-navy: #35575f;
+            --ignite-sage: #728b8f;
+            --ignite-orange: #faa22b;
+            --ignite-cream: #fffdfc;
+            
+            /* Extended palette */
+            --red-dark: #b53d28;
+            --red-light: #e8735a;
+            --navy-light: #456a73;
+            --sage-light: #9ab0b4;
+            
+            /* Neutrals */
+            --white: #FFFFFF;
+            --gray-50: #F9FAFB;
+            --gray-100: #F3F4F6;
+            --gray-200: #E5E7EB;
+            --gray-300: #D1D5DB;
+            --gray-400: #9CA3AF;
+            --gray-500: #6B7280;
+            --gray-600: #4B5563;
+            --gray-700: #374151;
+            --gray-800: #1F2937;
+            
+            /* Shadows */
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+            --shadow: 0 4px 15px rgba(0,0,0,0.08);
+            --shadow-lg: 0 15px 40px rgba(0,0,0,0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--ignite-cream);
+            color: var(--gray-700);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .header {
+            background: var(--ignite-navy);
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-img {
+            height: 45px;
+            width: auto;
+        }
+
+        .back-link {
+            color: var(--gray-300);
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover {
+            color: var(--white);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 30px;
+        }
+
+        /* Tool Header */
+        .tool-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .tool-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--ignite-red) 0%, var(--ignite-orange) 100%);
+            color: var(--white);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
+        .tool-header h1 {
+            font-family: 'Fraunces', serif;
+            font-size: 2.5rem;
+            color: var(--ignite-navy);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .tool-header p {
+            font-size: 1.1rem;
+            color: var(--gray-500);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Tabs */
+        .tabs-container {
+            margin-bottom: 30px;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            background: var(--white);
+            padding: 8px;
+            border-radius: 16px;
+            box-shadow: var(--shadow-sm);
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .tab {
+            flex: 1;
+            padding: 14px 24px;
+            border: none;
+            background: transparent;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            font-family: 'DM Sans', sans-serif;
+            color: var(--gray-500);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .tab:hover {
+            color: var(--gray-700);
+            background: var(--gray-50);
+        }
+
+        .tab.active {
+            background: var(--ignite-navy);
+            color: var(--white);
+            box-shadow: 0 4px 12px rgba(53, 87, 95, 0.3);
+        }
+
+        /* Tab Content */
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Guide Panel */
+        .guide-panel {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: var(--shadow);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .panel-title {
+            font-family: 'Fraunces', serif;
+            font-size: 1.3rem;
+            color: var(--ignite-navy);
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .panel-subtitle {
+            font-size: 0.9rem;
+            color: var(--gray-500);
+            margin-bottom: 25px;
+        }
+
+        /* Question Sections */
+        .question-section {
+            margin-bottom: 30px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .question-section:last-of-type {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .question-label {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--ignite-navy);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .question-number {
+            background: var(--ignite-navy);
+            color: var(--white);
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* Radio Options */
+        .options-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .option-card {
+            background: var(--gray-50);
+            border: 2px solid var(--gray-200);
+            border-radius: 12px;
+            padding: 15px 20px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .option-card:hover {
+            border-color: var(--ignite-orange);
+            background: var(--white);
+        }
+
+        .option-card.selected {
+            border-color: var(--ignite-red);
+            background: linear-gradient(135deg, rgba(207, 70, 46, 0.05) 0%, rgba(250, 162, 43, 0.05) 100%);
+        }
+
+        .option-card input {
+            display: none;
+        }
+
+        .option-radio {
+            width: 22px;
+            height: 22px;
+            border: 2px solid var(--gray-300);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.2s;
+        }
+
+        .option-card.selected .option-radio {
+            border-color: var(--ignite-red);
+            background: var(--ignite-red);
+        }
+
+        .option-card.selected .option-radio::after {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--white);
+            border-radius: 50%;
+        }
+
+        .option-content {
+            flex: 1;
+        }
+
+        .option-title {
+            font-weight: 600;
+            color: var(--gray-800);
+            margin-bottom: 2px;
+        }
+
+        .option-desc {
+            font-size: 0.85rem;
+            color: var(--gray-500);
+        }
+
+        /* Input Fields */
+        .input-group {
+            margin-top: 15px;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--gray-600);
+            margin-bottom: 6px;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .input-wrapper .prefix {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray-400);
+            font-weight: 500;
+        }
+
+        .input-wrapper input {
+            width: 100%;
+            padding: 12px 14px;
+            padding-left: 30px;
+            border: 2px solid var(--gray-200);
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: 'DM Sans', sans-serif;
+            color: var(--gray-800);
+            transition: all 0.2s;
+            background: var(--white);
+        }
+
+        .input-wrapper input:focus {
+            outline: none;
+            border-color: var(--ignite-orange);
+            box-shadow: 0 0 0 4px rgba(250, 162, 43, 0.15);
+        }
+
+        /* Calculate Button */
+        .calculate-btn {
+            width: 100%;
+            padding: 18px 30px;
+            background: linear-gradient(135deg, var(--ignite-red) 0%, var(--red-dark) 100%);
+            color: var(--white);
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            font-family: 'DM Sans', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(207, 70, 46, 0.3);
+            margin-top: 30px;
+        }
+
+        .calculate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(207, 70, 46, 0.4);
+        }
+
+        /* Results Section */
+        .results-section {
+            margin-top: 30px;
+            display: none;
+        }
+
+        .results-section.active {
+            display: block;
+        }
+
+        .recommendation-card {
+            background: linear-gradient(135deg, var(--ignite-navy) 0%, var(--navy-light) 100%);
+            border-radius: 20px;
+            padding: 30px;
+            color: var(--white);
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .recommendation-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            opacity: 0.8;
+            margin-bottom: 10px;
+        }
+
+        .recommendation-title {
+            font-family: 'Fraunces', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .recommendation-subtitle {
+            font-size: 1rem;
+            opacity: 0.85;
+        }
+
+        /* Comparison Table */
+        .comparison-table {
+            background: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .comparison-header {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            background: var(--gray-50);
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--gray-600);
+        }
+
+        .comparison-header > div {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .comparison-header > div:first-child {
+            text-align: left;
+        }
+
+        .comparison-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            border-bottom: 1px solid var(--gray-100);
+        }
+
+        .comparison-row:last-child {
+            border-bottom: none;
+        }
+
+        .comparison-row > div {
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+        }
+
+        .comparison-row > div:first-child {
+            justify-content: flex-start;
+            font-weight: 500;
+            color: var(--gray-700);
+        }
+
+        .comparison-row .check {
+            color: #10b981;
+            font-size: 1.2rem;
+        }
+
+        .comparison-row .x {
+            color: var(--gray-300);
+            font-size: 1.2rem;
+        }
+
+        .comparison-row .highlight {
+            background: rgba(207, 70, 46, 0.08);
+        }
+
+        /* Oregon Info Box */
+        .oregon-box {
+            background: linear-gradient(135deg, rgba(250, 162, 43, 0.1) 0%, rgba(255, 205, 29, 0.1) 100%);
+            border: 2px solid var(--ignite-yellow);
+            border-radius: 16px;
+            padding: 25px;
+            margin-top: 25px;
+        }
+
+        .oregon-box h4 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.1rem;
+            color: var(--ignite-navy);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .oregon-box ul {
+            list-style: none;
+            font-size: 0.9rem;
+            color: var(--gray-700);
+        }
+
+        .oregon-box li {
+            padding: 6px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .oregon-box li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--ignite-orange);
+        }
+
+        /* Action Steps */
+        .action-steps {
+            background: var(--gray-50);
+            border-radius: 16px;
+            padding: 25px;
+            margin-top: 25px;
+        }
+
+        .action-steps h4 {
+            font-size: 1rem;
+            color: var(--ignite-navy);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .action-steps ol {
+            padding-left: 20px;
+            font-size: 0.9rem;
+            color: var(--gray-700);
+        }
+
+        .action-steps li {
+            padding: 8px 0;
+        }
+
+        .action-steps a {
+            color: var(--ignite-red);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .action-steps a:hover {
+            text-decoration: underline;
+        }
+
+        /* Learn Tab Styles */
+        .learn-content-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .why-section {
+            background: linear-gradient(135deg, var(--ignite-navy) 0%, var(--navy-light) 100%);
+            border-radius: 20px;
+            padding: 35px 40px;
+            margin-bottom: 30px;
+            color: var(--white);
+        }
+
+        .why-section h2 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+
+        .why-section p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--gray-300);
+            margin-bottom: 15px;
+        }
+
+        .why-section strong {
+            color: var(--ignite-orange);
+        }
+
+        .why-callout {
+            background: rgba(255,255,255,0.1);
+            border-left: 3px solid var(--ignite-orange);
+            padding: 15px 20px;
+            margin-top: 20px;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .why-callout p {
+            color: var(--white);
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        /* Structure Cards */
+        .structures-section {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 35px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+        }
+
+        .structures-section h2 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.4rem;
+            color: var(--ignite-navy);
+            margin-bottom: 25px;
+        }
+
+        .structure-card {
+            background: var(--gray-50);
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--gray-300);
+        }
+
+        .structure-card.sole-prop { border-left-color: var(--ignite-sage); }
+        .structure-card.llc { border-left-color: var(--ignite-orange); }
+        .structure-card.s-corp { border-left-color: var(--ignite-red); }
+
+        .structure-card h3 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.2rem;
+            color: var(--ignite-navy);
+            margin-bottom: 10px;
+        }
+
+        .structure-card .tagline {
+            font-size: 0.9rem;
+            color: var(--gray-500);
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        .structure-card .pros-cons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 600px) {
+            .structure-card .pros-cons {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .structure-card .pros, .structure-card .cons {
+            font-size: 0.85rem;
+        }
+
+        .structure-card .pros h5, .structure-card .cons h5 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .structure-card .pros h5 { color: #10b981; }
+        .structure-card .cons h5 { color: #ef4444; }
+
+        .structure-card ul {
+            list-style: none;
+            color: var(--gray-600);
+        }
+
+        .structure-card li {
+            padding: 4px 0;
+            padding-left: 18px;
+            position: relative;
+        }
+
+        .structure-card .pros li::before { content: '✓'; position: absolute; left: 0; color: #10b981; }
+        .structure-card .cons li::before { content: '✗'; position: absolute; left: 0; color: #ef4444; }
+
+        /* Pro Tips */
+        .pro-tips {
+            background: linear-gradient(135deg, var(--ignite-cream) 0%, #fff 100%);
+            border: 2px solid var(--ignite-yellow);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .pro-tips h3 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.2rem;
+            color: var(--ignite-navy);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .pro-tips h3 .badge {
+            background: var(--ignite-yellow);
+            color: var(--ignite-navy);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.65rem;
+            font-family: 'DM Sans', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .pro-tips ul {
+            list-style: none;
+        }
+
+        .pro-tips li {
+            padding: 12px 0;
+            padding-left: 30px;
+            position: relative;
+            font-size: 0.9rem;
+            color: var(--gray-700);
+            line-height: 1.6;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .pro-tips li:last-child {
+            border-bottom: none;
+        }
+
+        .pro-tips li::before {
+            content: '💡';
+            position: absolute;
+            left: 0;
+        }
+
+        .pro-tips li strong {
+            color: var(--ignite-navy);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px 30px 30px;
+            border-top: 1px solid var(--gray-200);
+            margin-top: 50px;
+        }
+
+        .footer-brand {
+            font-size: 0.85rem;
+            color: var(--gray-500);
+            margin-bottom: 8px;
+        }
+
+        .footer-brand a {
+            color: var(--ignite-navy);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .footer-copyright {
+            font-size: 0.75rem;
+            color: var(--gray-400);
+        }
+
+        .footer-copyright .divider {
+            margin: 0 8px;
+            color: var(--gray-300);
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .tool-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .comparison-header,
+            .comparison-row {
+                grid-template-columns: 1.5fr 1fr 1fr 1fr;
+                font-size: 0.75rem;
+            }
+
+            .comparison-header > div,
+            .comparison-row > div {
+                padding: 10px 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo-container">
+            <img src="YOUR-LOGO-URL-HERE" alt="Ignite Positive Changes" class="logo-img">
+        </div>
+        <a href="javascript:history.back()" class="back-link">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            Back to Toolkit
+        </a>
+    </header>
+
+    <div class="container">
+        <!-- Tool Header -->
+        <div class="tool-header">
+            <div class="tool-badge">Decision Guide</div>
+            <h1>Business Structure Decision Guide</h1>
+            <p>Compare LLC vs S-Corp vs Sole Proprietorship and find the right structure for your business — with Oregon-specific guidance.</p>
+        </div>
+
+        <!-- Tabs -->
+        <div class="tabs-container">
+            <div class="tabs">
+                <button class="tab active" onclick="switchTab('guide')">
+                    <span>🧭</span>
+                    Guide
+                </button>
+                <button class="tab" onclick="switchTab('learn')">
+                    <span>📚</span>
+                    Learn
+                </button>
+            </div>
+        </div>
+
+        <!-- Guide Tab -->
+        <div id="guide-tab" class="tab-content active">
+            <div class="guide-panel">
+                <h2 class="panel-title">Answer a Few Questions</h2>
+                <p class="panel-subtitle">We'll recommend the best structure based on your situation</p>
+
+                <!-- Question 1: Expected Income -->
+                <div class="question-section">
+                    <div class="question-label">
+                        <span class="question-number">1</span>
+                        What's your expected annual net profit?
+                    </div>
+                    <div class="options-grid">
+                        <label class="option-card" onclick="selectOption(this, 'income', 'under40k')">
+                            <input type="radio" name="income" value="under40k">
+                            <div class="option-radio"></div>
+                            <div class="option-content">
+                                <div class="option-title">Under $40,000</div>
+                                <div class="option-desc">Side hustle or early-stage business</div>
+                            </div>
+                        </label>
+                        <label class="option-card" onclick="selectOption(this, 'income', '40k-80k')">
+                            <input type="radio" name="income" value="40k-80k">
+                            <div class="option-radio"></div>
+                            <div class="option-content">
+                                <div class="option-title">$40,000 - $80,000</div>
+                                <div class="option-desc">Solid income, growing business</div>
+                            </div>
+                        </label>
+                        <label class="option-card" onclick="selectOption(this, 'income', 'over80k')">
+                            <input type="radio" name="income" value="over80k">
+                            <div class="option-radio"></div>
+                            <div class="option-content">
+                                <div class="option-title">Over $80,000</div>
+                                <div class="option-desc">Established, profitable business</div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 2: Liability Risk -->
+                <div class="question-section">
+                    <div class="question-label">
+                        <span class="question-number">2</span>
+                        How much liability risk does your business have?
+                    </div>
+                    <div class="options-grid">
+                        <label class="option-card" onclick="selectOption(this, 'liability', 'low')">
+                            <input type="radio" name="liability" value="low">
+                            <div class="option-radio"></div>
+                            <div class="option-content">
+                                <div class="option-title">Low Risk</div>
+                                <div class="option-desc">Consulting, freelancing, online services</div>
+                            </div>
+                        </label>
+                        <label class="option-card" onclick="selectOption(this, 'liability', 'medium')">
+                            <input type="radio" name="liability" value="medium">
+                            <div class="option-radio"></div>
+                            <div class="option-content">
+                                <div class="option-title">Medium Risk</div>
+                                <div class="option-desc">Client-facing services, some physical work</div>
+                            </div>
+                        </label>
+                        <label class="option-card" onclick="selectOption(this, 'liability', 'high')">
+                            <input type="radio" name="liability" value="high">
+                            <div class="option-radio"></div>
+                            <div class="option-content">
+                                <div class="option-title">High Risk</div>
+                                <div class="option-desc">Physical products, healthcare, construction</div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 3: Complexity Tolerance -->
+                <div class="question-section">
+                    <div class="question-label">
+                        <span class="question-number">3</span>
+                        How much paperwork are you willing to handle?
+                    </div>
+                    <div class="options-grid">
+                        <label class="option-card" onclick="selectOption(this, 'complexity', 'minimal')">
+                            <input type="radio" name="complexity" value="minimal">
+                            <div class="option-radio"></div>
+                            <div class="option-content">
+                                <div class="option-title">Keep It Simple</div>
+                                <div class="option-desc">Minimal paperwork, basic taxes</div>
+                            </div>
+                        </label>
+                        <label class="option-card" onclick="selectOption(this, 'complexity', 'moderate')">
+                            <input type="radio" name="complexity" value="moderate">
+                            <div class="option-radio"></div>
+                            <div class="option-content">
+                                <div class="option-title">Some Structure is OK</div>
+                                <div class="option-desc">Willing to do annual filings, separate accounts</div>
+                            </div>
+                        </label>
+                        <label class="option-card" onclick="selectOption(this, 'complexity', 'complex')">
+                            <input type="radio" name="complexity" value="complex">
+                            <div class="option-radio"></div>
+                            <div class="option-content">
+                                <div class="option-title">I'll Do What It Takes</div>
+                                <div class="option-desc">Payroll, quarterly filings, bookkeeping</div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Question 4: Growth Plans -->
+                <div class="question-section">
+                    <div class="question-label">
+                        <span class="question-number">4</span>
+                        What are your growth plans?
+                    </div>
+                    <div class="options-grid">
+                        <label class="option-card" onclick="selectOption(this, 'growth', 'solo')">
+                            <input type="radio" name="growth" value="solo">
+                            <div class="option-radio"></div>
+                            <div class="option-content">
+                                <div class="option-title">Stay Solo</div>
+                                <div class="option-desc">Just me, no plans to hire</div>
+                            </div>
+                        </label>
+                        <label class="option-card" onclick="selectOption(this, 'growth', 'contractors')">
+                            <input type="radio" name="growth" value="contractors">
+                            <div class="option-radio"></div>
+                            <div class="option-content">
+                                <div class="option-title">Use Contractors</div>
+                                <div class="option-desc">May hire contractors, not employees</div>
+                            </div>
+                        </label>
+                        <label class="option-card" onclick="selectOption(this, 'growth', 'employees')">
+                            <input type="radio" name="growth" value="employees">
+                            <div class="option-radio"></div>
+                            <div class="option-content">
+                                <div class="option-title">Build a Team</div>
+                                <div class="option-desc">Plan to hire employees eventually</div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <button class="calculate-btn" onclick="getRecommendation()">Get My Recommendation</button>
+
+                <!-- Results Section -->
+                <div class="results-section" id="results">
+                    <div class="recommendation-card" id="recommendation-card">
+                        <div class="recommendation-label">Our Recommendation</div>
+                        <div class="recommendation-title" id="rec-title">LLC</div>
+                        <div class="recommendation-subtitle" id="rec-subtitle">Best balance of protection and simplicity for your situation</div>
+                    </div>
+
+                    <!-- Comparison Table -->
+                    <div class="comparison-table">
+                        <div class="comparison-header">
+                            <div>Feature</div>
+                            <div>Sole Prop</div>
+                            <div>LLC</div>
+                            <div>S-Corp</div>
+                        </div>
+                        <div class="comparison-row" id="row-liability">
+                            <div>Liability Protection</div>
+                            <div><span class="x">✗</span></div>
+                            <div><span class="check">✓</span></div>
+                            <div><span class="check">✓</span></div>
+                        </div>
+                        <div class="comparison-row" id="row-setup">
+                            <div>Easy Setup</div>
+                            <div><span class="check">✓</span></div>
+                            <div><span class="check">✓</span></div>
+                            <div><span class="x">✗</span></div>
+                        </div>
+                        <div class="comparison-row" id="row-taxes">
+                            <div>Self-Employment Tax Savings</div>
+                            <div><span class="x">✗</span></div>
+                            <div><span class="x">✗</span></div>
+                            <div><span class="check">✓</span></div>
+                        </div>
+                        <div class="comparison-row" id="row-paperwork">
+                            <div>Minimal Paperwork</div>
+                            <div><span class="check">✓</span></div>
+                            <div><span class="check">✓</span></div>
+                            <div><span class="x">✗</span></div>
+                        </div>
+                        <div class="comparison-row" id="row-credibility">
+                            <div>Business Credibility</div>
+                            <div><span class="x">✗</span></div>
+                            <div><span class="check">✓</span></div>
+                            <div><span class="check">✓</span></div>
+                        </div>
+                        <div class="comparison-row" id="row-cost">
+                            <div>Oregon Annual Cost</div>
+                            <div>$0</div>
+                            <div>$100</div>
+                            <div>$100+</div>
+                        </div>
+                    </div>
+
+                    <!-- Oregon Info -->
+                    <div class="oregon-box">
+                        <h4>🌲 Oregon-Specific Information</h4>
+                        <ul>
+                            <li><strong>LLC Filing Fee:</strong> $100 online through the Oregon Secretary of State</li>
+                            <li><strong>Annual Report:</strong> $100/year for LLCs and Corps (due on anniversary date)</li>
+                            <li><strong>No State Income Tax on S-Corps:</strong> Oregon taxes S-Corp income on your personal return</li>
+                            <li><strong>Business Registry:</strong> <a href="https://sos.oregon.gov/business" target="_blank" style="color: var(--ignite-red);">sos.oregon.gov/business</a></li>
+                            <li><strong>CAT Tax:</strong> If revenue exceeds $1M, you'll owe Corporate Activity Tax</li>
+                        </ul>
+                    </div>
+
+                    <!-- Next Steps -->
+                    <div class="action-steps" id="action-steps">
+                        <h4>📋 Your Next Steps</h4>
+                        <ol id="steps-list">
+                            <li>Step 1</li>
+                            <li>Step 2</li>
+                            <li>Step 3</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Learn Tab -->
+        <div id="learn-tab" class="tab-content">
+            <div class="learn-content-wrapper">
+                
+                <!-- Why This Matters -->
+                <div class="why-section">
+                    <h2>🏛️ Why Your Business Structure Matters</h2>
+                    <p><strong>Your business structure affects everything:</strong> how much you pay in taxes, whether your personal assets are protected, and how much paperwork you'll deal with.</p>
+                    <p>The wrong structure can cost you thousands in unnecessary taxes — or leave your personal savings exposed if something goes wrong.</p>
+                    <div class="why-callout">
+                        <p>⚠️ <strong>Important:</strong> You can always change your structure later, but it's easier and cheaper to start with the right one. Most Oregon small businesses start as Sole Props or LLCs.</p>
+                    </div>
+                </div>
+
+                <!-- The Three Structures -->
+                <div class="structures-section">
+                    <h2>📊 The Three Main Structures</h2>
+
+                    <div class="structure-card sole-prop">
+                        <h3>Sole Proprietorship</h3>
+                        <p class="tagline">"The default — if you do nothing, this is what you are"</p>
+                        <div class="pros-cons">
+                            <div class="pros">
+                                <h5>✓ Pros</h5>
+                                <ul>
+                                    <li>Zero setup cost or paperwork</li>
+                                    <li>Simplest tax filing (Schedule C)</li>
+                                    <li>Complete control over business</li>
+                                    <li>Can use your SSN (no EIN needed)</li>
+                                </ul>
+                            </div>
+                            <div class="cons">
+                                <h5>✗ Cons</h5>
+                                <ul>
+                                    <li>No liability protection</li>
+                                    <li>Personal assets at risk</li>
+                                    <li>Harder to get business credit</li>
+                                    <li>Less professional appearance</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="structure-card llc">
+                        <h3>Limited Liability Company (LLC)</h3>
+                        <p class="tagline">"Protection + flexibility — the sweet spot for most small businesses"</p>
+                        <div class="pros-cons">
+                            <div class="pros">
+                                <h5>✓ Pros</h5>
+                                <ul>
+                                    <li>Personal assets protected</li>
+                                    <li>Flexible tax options</li>
+                                    <li>Professional credibility</li>
+                                    <li>Easy to set up ($100 in Oregon)</li>
+                                </ul>
+                            </div>
+                            <div class="cons">
+                                <h5>✗ Cons</h5>
+                                <ul>
+                                    <li>$100/year Oregon renewal</li>
+                                    <li>Must keep business/personal separate</li>
+                                    <li>Still pay self-employment tax</li>
+                                    <li>Some extra record-keeping</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="structure-card s-corp">
+                        <h3>S-Corporation</h3>
+                        <p class="tagline">"Tax savings for profitable businesses — but more complexity"</p>
+                        <div class="pros-cons">
+                            <div class="pros">
+                                <h5>✓ Pros</h5>
+                                <ul>
+                                    <li>Save on self-employment taxes</li>
+                                    <li>Liability protection</li>
+                                    <li>Professional credibility</li>
+                                    <li>Can be an LLC taxed as S-Corp</li>
+                                </ul>
+                            </div>
+                            <div class="cons">
+                                <h5>✗ Cons</h5>
+                                <ul>
+                                    <li>Must run payroll (even for yourself)</li>
+                                    <li>Reasonable salary requirement</li>
+                                    <li>More expensive accounting</li>
+                                    <li>Quarterly tax filings</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pro Tips -->
+                <div class="pro-tips">
+                    <h3>💼 Pro Tips <span class="badge">From the Field</span></h3>
+                    <ul>
+                        <li><strong>The "$50K rule" for S-Corp:</strong> Most accountants say S-Corp tax savings don't outweigh the costs until you're profiting $50-80K+. Below that, stick with LLC.</li>
+                        <li><strong>LLC → S-Corp is easy:</strong> You can form an LLC now and elect S-Corp tax treatment later when income justifies it. Best of both worlds.</li>
+                        <li><strong>Liability protection isn't automatic:</strong> You must keep business and personal finances separate, or courts can "pierce the corporate veil."</li>
+                        <li><strong>Get an EIN regardless:</strong> Even sole props should get a free EIN from the IRS. It protects your SSN and looks more professional.</li>
+                        <li><strong>Talk to a CPA before S-Corp:</strong> The "reasonable salary" requirement is tricky. Too low and you'll get audited. A good CPA pays for themselves.</li>
+                    </ul>
+                </div>
+
+                <!-- When to Consider Each -->
+                <div class="structures-section">
+                    <h2>🎯 Quick Decision Guide</h2>
+                    
+                    <div style="background: var(--gray-50); border-radius: 12px; padding: 20px; margin-bottom: 15px;">
+                        <strong style="color: var(--ignite-sage);">Choose Sole Proprietorship if:</strong>
+                        <p style="font-size: 0.9rem; color: var(--gray-600); margin-top: 8px;">You're testing a business idea, making under $20K, have low liability risk, and want zero hassle.</p>
+                    </div>
+
+                    <div style="background: var(--gray-50); border-radius: 12px; padding: 20px; margin-bottom: 15px;">
+                        <strong style="color: var(--ignite-orange);">Choose LLC if:</strong>
+                        <p style="font-size: 0.9rem; color: var(--gray-600); margin-top: 8px;">You want liability protection, plan to grow, work with clients who expect it, or have any meaningful risk.</p>
+                    </div>
+
+                    <div style="background: var(--gray-50); border-radius: 12px; padding: 20px;">
+                        <strong style="color: var(--ignite-red);">Choose S-Corp (or LLC taxed as S-Corp) if:</strong>
+                        <p style="font-size: 0.9rem; color: var(--gray-600); margin-top: 8px;">You're consistently profiting $60K+, want to save on self-employment taxes, and can handle payroll complexity.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-brand">
+            Part of the <a href="#">Ignite Positive Changes Business Toolkit</a>
+        </div>
+        <div class="footer-copyright">
+            © 2025 <a href="#">Discover Your Success with Alayna Marie</a>
+            <span class="divider">|</span>
+            Built for Ignite Positive Changes Fractional
+        </div>
+    </footer>
+
+    <script>
+        // Store selections
+        const selections = {
+            income: null,
+            liability: null,
+            complexity: null,
+            growth: null
+        };
+
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            document.getElementById(`${tabName}-tab`).classList.add('active');
+            
+            const tabs = document.querySelectorAll('.tab');
+            if (tabName === 'guide') {
+                tabs[0].classList.add('active');
+            } else {
+                tabs[1].classList.add('active');
+            }
+        }
+
+        function selectOption(element, question, value) {
+            // Remove selected from siblings
+            element.parentElement.querySelectorAll('.option-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            // Add selected to clicked
+            element.classList.add('selected');
+            // Store value
+            selections[question] = value;
+        }
+
+        function getRecommendation() {
+            // Check all questions answered
+            if (!selections.income || !selections.liability || !selections.complexity || !selections.growth) {
+                alert('Please answer all questions to get your recommendation.');
+                return;
+            }
+
+            // Calculate recommendation
+            let score = {
+                soleProp: 0,
+                llc: 0,
+                sCorp: 0
+            };
+
+            // Income scoring
+            if (selections.income === 'under40k') {
+                score.soleProp += 3;
+                score.llc += 1;
+            } else if (selections.income === '40k-80k') {
+                score.llc += 3;
+                score.sCorp += 1;
+            } else if (selections.income === 'over80k') {
+                score.sCorp += 3;
+                score.llc += 2;
+            }
+
+            // Liability scoring
+            if (selections.liability === 'low') {
+                score.soleProp += 2;
+                score.llc += 1;
+            } else if (selections.liability === 'medium') {
+                score.llc += 3;
+                score.sCorp += 1;
+            } else if (selections.liability === 'high') {
+                score.llc += 2;
+                score.sCorp += 2;
+            }
+
+            // Complexity scoring
+            if (selections.complexity === 'minimal') {
+                score.soleProp += 3;
+                score.llc += 1;
+            } else if (selections.complexity === 'moderate') {
+                score.llc += 3;
+            } else if (selections.complexity === 'complex') {
+                score.sCorp += 2;
+                score.llc += 1;
+            }
+
+            // Growth scoring
+            if (selections.growth === 'solo') {
+                score.soleProp += 2;
+                score.llc += 1;
+            } else if (selections.growth === 'contractors') {
+                score.llc += 3;
+            } else if (selections.growth === 'employees') {
+                score.llc += 2;
+                score.sCorp += 2;
+            }
+
+            // Determine winner
+            let recommendation = 'llc';
+            let recTitle = 'LLC (Limited Liability Company)';
+            let recSubtitle = 'Best balance of protection and simplicity for your situation';
+            let steps = [];
+
+            if (score.soleProp > score.llc && score.soleProp > score.sCorp) {
+                recommendation = 'soleProp';
+                recTitle = 'Sole Proprietorship';
+                recSubtitle = 'Keep it simple — you can always upgrade later';
+                steps = [
+                    'Get a free EIN from <a href="https://www.irs.gov/businesses/small-businesses-self-employed/apply-for-an-employer-identification-number-ein-online" target="_blank">IRS.gov</a> (protects your SSN)',
+                    'Open a separate business bank account',
+                    'Track income and expenses from day one',
+                    'Consider general liability insurance',
+                    'Register a DBA (Doing Business As) if using a business name'
+                ];
+            } else if (score.sCorp > score.llc) {
+                recommendation = 'sCorp';
+                recTitle = 'S-Corporation (or LLC taxed as S-Corp)';
+                recSubtitle = 'Maximize tax savings — worth the extra complexity at your income level';
+                steps = [
+                    'Consult with a CPA to confirm S-Corp makes sense for your situation',
+                    'Form an LLC first at <a href="https://sos.oregon.gov/business" target="_blank">Oregon Secretary of State</a> ($100)',
+                    'File Form 2553 with IRS to elect S-Corp tax treatment',
+                    'Set up payroll (you must pay yourself a "reasonable salary")',
+                    'Open business bank account and get business credit card',
+                    'Set up quarterly estimated tax payments'
+                ];
+            } else {
+                recommendation = 'llc';
+                recTitle = 'LLC (Limited Liability Company)';
+                recSubtitle = 'Best balance of protection and simplicity for your situation';
+                steps = [
+                    'File Articles of Organization at <a href="https://sos.oregon.gov/business" target="_blank">Oregon Secretary of State</a> ($100)',
+                    'Get your EIN from <a href="https://www.irs.gov/businesses/small-businesses-self-employed/apply-for-an-employer-identification-number-ein-online" target="_blank">IRS.gov</a> (free)',
+                    'Open a business bank account (keep finances separate!)',
+                    'Create a simple Operating Agreement (even as single-member)',
+                    'Set up quarterly estimated tax payments',
+                    'Mark your calendar for annual report ($100/year, due on anniversary)'
+                ];
+            }
+
+            // Update display
+            document.getElementById('rec-title').textContent = recTitle;
+            document.getElementById('rec-subtitle').textContent = recSubtitle;
+
+            // Highlight recommended column
+            document.querySelectorAll('.comparison-row > div').forEach(cell => {
+                cell.classList.remove('highlight');
+            });
+            
+            const colIndex = recommendation === 'soleProp' ? 1 : (recommendation === 'llc' ? 2 : 3);
+            document.querySelectorAll('.comparison-row').forEach(row => {
+                row.children[colIndex].classList.add('highlight');
+            });
+
+            // Update steps
+            const stepsList = document.getElementById('steps-list');
+            stepsList.innerHTML = steps.map(step => `<li>${step}</li>`).join('');
+
+            // Show results
+            document.getElementById('results').classList.add('active');
+            document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    </script>
+</body>
+</html>
